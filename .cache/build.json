@@ -1,0 +1,14 @@
+{
+    "contracts\\Staking.tsol": {
+        "modificationTime": 1701173836978
+    },
+    "C:\\Users\\SuperD\\sample-project\\node_modules\\@broxus\\tip3\\contracts\\interfaces\\IAcceptTokensTransferCallback.tsol": {
+        "modificationTime": 1700510530752
+    },
+    "C:\\Users\\SuperD\\sample-project\\node_modules\\@broxus\\tip3\\contracts\\interfaces\\ITokenRoot.tsol": {
+        "modificationTime": 1700510530752
+    },
+    "C:\\Users\\SuperD\\sample-project\\node_modules\\@broxus\\tip3\\contracts\\interfaces\\ITokenWallet.tsol": {
+        "modificationTime": 1700510530752
+    }
+}
