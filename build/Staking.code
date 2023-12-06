@@ -181,8 +181,13 @@ CALLREF {
 THROW 0
 
 .macro onAcceptTokensTransfer_internal_macro
-.loc ../contracts/Staking.tsol, 90
+.loc ../contracts/Staking.tsol, 89
 BLKDROP 3
+GETGLOB 9
+GETGLOB 13
+SDEQ
+THROWIFNOT 108
+.loc ../contracts/Staking.tsol, 90
 PUSHINT 200000000
 PUSHINT 0
 RAWRESERVE
@@ -473,13 +478,8 @@ CALLREF {
 THROW 0
 
 .macro onNftTransfer_internal_macro
-.loc ../contracts/Staking.tsol, 112
-DROP2
-GETGLOB 9
-GETGLOB 14
-SDEQ
-THROWIFNOT 108
 .loc ../contracts/Staking.tsol, 113
+DROP2
 GETGLOB 14
 SDEQ
 PUSHCONT {
