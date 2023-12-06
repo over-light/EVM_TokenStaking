@@ -7,7 +7,7 @@ async function main() {
       publicKey: signer.publicKey,
     });
     const { contract: staking, tx } = await locklift.factory.deployContract({
-      contract: "StakingContract",
+      contract: "Staking",
       publicKey: signer.publicKey,
       initParams: {
         _nonce: getRandomNonce(),
@@ -18,7 +18,7 @@ async function main() {
         stakingNFTRoot: new Address('0:127f28a512b73050a306a0836bb683bde3598e268594874b6aaa9a88c3b479d5'),
         sendRemainingGasTo: account.address
       },
-      value: locklift.utils.toNano(3),
+      value: locklift.utils.toNano(1.3),
     });
   
     console.log(`Staking deployed at: ${staking.address.toString()}`);

@@ -1,14 +1,14 @@
 {
-    "contracts\\Staking.tsol": {
-        "modificationTime": 1701173836978
+    "contracts/Staking.tsol": {
+        "modificationTime": 1701798057495
     },
-    "C:\\Users\\SuperD\\sample-project\\node_modules\\@broxus\\tip3\\contracts\\interfaces\\IAcceptTokensTransferCallback.tsol": {
-        "modificationTime": 1700510530752
+    "/home/ubuntu/super1114/venom-token-staking/node_modules/@broxus/tip3/contracts/interfaces/IAcceptTokensTransferCallback.tsol": {
+        "modificationTime": 1701174734310
     },
-    "C:\\Users\\SuperD\\sample-project\\node_modules\\@broxus\\tip3\\contracts\\interfaces\\ITokenRoot.tsol": {
-        "modificationTime": 1700510530752
+    "/home/ubuntu/super1114/venom-token-staking/node_modules/@broxus/tip3/contracts/interfaces/ITokenWallet.tsol": {
+        "modificationTime": 1701174734310
     },
-    "C:\\Users\\SuperD\\sample-project\\node_modules\\@broxus\\tip3\\contracts\\interfaces\\ITokenWallet.tsol": {
-        "modificationTime": 1700510530752
+    "/home/ubuntu/super1114/venom-token-staking/node_modules/@broxus/tip3/contracts/interfaces/ITokenRoot.tsol": {
+        "modificationTime": 1701174734310
     }
 }

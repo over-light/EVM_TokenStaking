@@ -35,11 +35,54 @@
 			]
 		},
 		{
-			"name": "stake",
+			"name": "getRewardAmount",
+			"inputs": [
+				{"name":"staker","type":"address"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint128"}
+			]
+		},
+		{
+			"name": "claim",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "unstakable",
+			"inputs": [
+				{"name":"staker","type":"address"}
+			],
+			"outputs": [
+				{"name":"value0","type":"bool"}
+			]
+		},
+		{
+			"name": "unstake",
 			"inputs": [
 				{"name":"amount","type":"uint128"}
 			],
 			"outputs": [
+			]
+		},
+		{
+			"name": "getAPY",
+			"inputs": [
+				{"name":"staker","type":"address"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint128"}
+			]
+		},
+		{
+			"name": "getStakedInfo",
+			"inputs": [
+				{"name":"staker","type":"address"}
+			],
+			"outputs": [
+				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nftIds","type":"uint128[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{
@@ -71,7 +114,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"components":[{"name":"amount","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"nftIds","type":"uint256[]"}],"name":"stakes","type":"map(address,tuple)"}
+				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nftIds","type":"uint128[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"stakes","type":"map(address,tuple)"}
 			]
 		},
 		{
@@ -88,6 +131,36 @@
 		{"key":2,"name":"_owner","type":"address"}
 	],
 	"events": [
+		{
+			"name": "TokenStake",
+			"inputs": [
+				{"name":"staker","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"time","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "TokenClaim",
+			"inputs": [
+				{"name":"staker","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"time","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "TokenUnstake",
+			"inputs": [
+				{"name":"staker","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"time","type":"uint128"}
+			],
+			"outputs": [
+			]
+		}
 	],
 	"fields": [
 		{"name":"_pubkey","type":"uint256"},
@@ -98,7 +171,7 @@
 		{"name":"_stakingTokenRoot","type":"address"},
 		{"name":"_stakingTokenWallet","type":"address"},
 		{"name":"_stakingNFTRoot","type":"address"},
-		{"components":[{"name":"amount","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"nftIds","type":"uint256[]"}],"name":"stakes","type":"map(address,tuple)"},
+		{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nftIds","type":"uint128[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"stakes","type":"map(address,tuple)"},
 		{"name":"totalStakedAmount","type":"uint128"}
 	]
 }

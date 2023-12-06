@@ -3,14 +3,14 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
-import "@broxus/tip3/contracts/interfaces/IAcceptTokensTransferCallback.tsol";
-import "@broxus/tip3/contracts/interfaces/ITokenRoot.tsol";
-import "@broxus/tip3/contracts/interfaces/ITokenWallet.tsol";
+import "@broxus/tip3/contracts/interfaces/~IAcceptTokensTransferCallback.tsol";
+import "@broxus/tip3/contracts/interfaces/~ITokenRoot.tsol";
+import "@broxus/tip3/contracts/interfaces/~ITokenWallet.tsol";
 
 // // This interface for transferring NFT to winner
-// import "@broxus/tip4/contracts/TIP4_1/interfaces/ITIP4_1NFT.tsol";
+// import "@broxus/tip4/contracts/TIP4_1/interfaces/~ITIP4_1NFT.tsol";
 // // This interface to accept NFT from owner
-// import "@broxus/tip4/contracts/TIP4_1/interfaces/INftTransfer.tsol";
+// import "@broxus/tip4/contracts/TIP4_1/interfaces/~INftTransfer.tsol";
 
 contract Staking is IAcceptTokensTransferCallback {
     uint16  static _nonce; // some random value to affect on contract address
