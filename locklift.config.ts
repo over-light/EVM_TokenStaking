@@ -22,7 +22,7 @@ const config: LockliftConfig = {
     // path: "/mnt/o/projects/broxus/TON-Solidity-Compiler/build/solc/solc",
 
     // Or specify version of compiler
-    version: "0.64.0",
+    version: "0.61.2",
 
     // Specify config for extarnal contracts as in exapmple
     // externalContracts: {
@@ -36,7 +36,7 @@ const config: LockliftConfig = {
     // path: "/mnt/o/projects/broxus/TVM-linker/target/release/tvm_linker",
 
     // Or specify version of linker
-    version: "0.20.2",
+    version: "0.15.48",
   },
   networks: {
     locklift: {
