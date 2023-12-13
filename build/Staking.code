@@ -26,25 +26,28 @@ ENDS
 CTOS
 LDMSGADDR
 ENDS
-.loc ../contracts/Staking.tsol, 56
-ACCEPT
 .loc ../contracts/Staking.tsol, 57
+ACCEPT
+.loc ../contracts/Staking.tsol, 58
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 58
-PUSH S2
-SETGLOB 12
 .loc ../contracts/Staking.tsol, 59
-SWAP
-SETGLOB 14
+PUSH S2
+SETGLOB 13
 .loc ../contracts/Staking.tsol, 60
-PUSHINT 0
-SETGLOB 17
+SWAP
+SETGLOB 15
 .loc ../contracts/Staking.tsol, 61
 PUSHINT 0
 SETGLOB 18
 .loc ../contracts/Staking.tsol, 62
+PUSHINT 0
+SETGLOB 19
+.loc ../contracts/Staking.tsol, 63
+GETGLOB 9
+SETGLOB 12
+.loc ../contracts/Staking.tsol, 64
 PUSHINT 100000000
 MYADDR
 ROLL 3
@@ -63,7 +66,7 @@ STBREFR
 ENDC
 PUSHINT 1
 SENDRAWMSG
-.loc ../contracts/Staking.tsol, 70
+.loc ../contracts/Staking.tsol, 72
 NEWC
 STSLICECONST x42_
 STSLICE
@@ -87,7 +90,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 72
+.loc ../contracts/Staking.tsol, 74
 OVER
 PUSHCONT {
 	LDREF
@@ -108,24 +111,24 @@ CALLREF {
 THROW 0
 
 .macro onTokenWallet_internal_macro
-.loc ../contracts/Staking.tsol, 73
+.loc ../contracts/Staking.tsol, 75
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 NEQINT 0
 GETGLOB 9
-GETGLOB 12
+GETGLOB 13
 SDEQ
 AND
 THROWIFNOT 101
-.loc ../contracts/Staking.tsol, 78
+.loc ../contracts/Staking.tsol, 80
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 79
-SETGLOB 13
-.loc ../contracts/Staking.tsol, 80
+.loc ../contracts/Staking.tsol, 81
+SETGLOB 14
+.loc ../contracts/Staking.tsol, 82
 GETGLOB 11
 NEWC
 STSLICECONST x42_
@@ -146,7 +149,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 82
+.loc ../contracts/Staking.tsol, 84
 OVER
 PUSHCONT {
 	LDREF
@@ -181,25 +184,25 @@ CALLREF {
 THROW 0
 
 .macro onAcceptTokensTransfer_internal_macro
-.loc ../contracts/Staking.tsol, 90
+.loc ../contracts/Staking.tsol, 92
 BLKDROP 3
 GETGLOB 9
-GETGLOB 13
+GETGLOB 14
 SDEQ
 THROWIFNOT 108
-.loc ../contracts/Staking.tsol, 91
+.loc ../contracts/Staking.tsol, 93
 PUSHINT 200000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 92
-GETGLOB 17
+.loc ../contracts/Staking.tsol, 94
+GETGLOB 18
 PUSH S2
 ADD
 UFITS 128
-SETGLOB 17
-.loc ../contracts/Staking.tsol, 93
+SETGLOB 18
+.loc ../contracts/Staking.tsol, 95
 DUP
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -227,9 +230,9 @@ IFREFELSEREF
 }
 FIRST
 PUSHCONT {
-	.loc ../contracts/Staking.tsol, 94
+	.loc ../contracts/Staking.tsol, 96
 	DUP
-	GETGLOB 16
+	GETGLOB 17
 	DUP2
 	PUSHINT 267
 	DICTGET
@@ -276,8 +279,8 @@ IFREFELSEREF
 	PUSHINT 267
 	DICTSETB
 	DUP
-	SETGLOB 16
-	.loc ../contracts/Staking.tsol, 95
+	SETGLOB 17
+	.loc ../contracts/Staking.tsol, 97
 	PUXC S1, S-1
 	DUP2
 	PUSHINT 267
@@ -324,13 +327,13 @@ IFREFELSEREF
 	ROTREV
 	PUSHINT 267
 	DICTSETB
-	SETGLOB 16
+	SETGLOB 17
 	.loc ../contracts/Staking.tsol, 0
 }
 IFNOT
-.loc ../contracts/Staking.tsol, 97
+.loc ../contracts/Staking.tsol, 99
 DUP2
-GETGLOB 16
+GETGLOB 17
 DUP2
 PUSHINT 267
 DICTGET
@@ -380,13 +383,13 @@ CALLREF {
 ROTREV
 PUSHINT 267
 DICTSETB
-SETGLOB 16
-.loc ../contracts/Staking.tsol, 98
-GETGLOB 9
-SETGLOB 15
+SETGLOB 17
 .loc ../contracts/Staking.tsol, 100
+GETGLOB 9
+SETGLOB 16
+.loc ../contracts/Staking.tsol, 102
 DUP
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -435,7 +438,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 103
+.loc ../contracts/Staking.tsol, 105
 OVER
 PUSHCONT {
 	LDREF
@@ -478,14 +481,14 @@ CALLREF {
 THROW 0
 
 .macro onNftTransfer_internal_macro
-.loc ../contracts/Staking.tsol, 115
+.loc ../contracts/Staking.tsol, 117
 BLKDROP 6
 PUSHINT 200000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 116
+.loc ../contracts/Staking.tsol, 118
 DUP
-GETGLOB 16
+GETGLOB 17
 DUP2
 PUSHINT 267
 DICTGET
@@ -541,23 +544,23 @@ CALLREF {
 ROTREV
 PUSHINT 267
 DICTSETB
-SETGLOB 16
-.loc ../contracts/Staking.tsol, 117
-DUP
-SETGLOB 20
-.loc ../contracts/Staking.tsol, 118
-GETGLOB 18
-INC
-UFITS 128
-SETGLOB 18
+SETGLOB 17
 .loc ../contracts/Staking.tsol, 119
 DUP
-GETGLOB 9
+SETGLOB 21
+.loc ../contracts/Staking.tsol, 120
 GETGLOB 19
+INC
+UFITS 128
+SETGLOB 19
+.loc ../contracts/Staking.tsol, 121
+DUP
+GETGLOB 9
+GETGLOB 20
 PUSHINT 267
 DICTSET
-SETGLOB 19
-.loc ../contracts/Staking.tsol, 120
+SETGLOB 20
+.loc ../contracts/Staking.tsol, 122
 NOW
 GETGLOB 9
 ROT
@@ -589,7 +592,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 123
+.loc ../contracts/Staking.tsol, 125
 OVER
 PUSHCONT {
 	LDREF
@@ -632,10 +635,10 @@ CALLREF {
 THROW 0
 
 .macro getRewardAmount_internal_macro
-.loc ../contracts/Staking.tsol, 124
+.loc ../contracts/Staking.tsol, 126
 NOW
 OVER
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -664,10 +667,10 @@ IFREFELSEREF
 SECOND
 SUB
 UFITS 128
-.loc ../contracts/Staking.tsol, 125
+.loc ../contracts/Staking.tsol, 127
 PUSHINT 50
 PUSH2 S0, S2
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -697,9 +700,9 @@ INDEX2 2, 0
 MUL
 ADD
 UFITS 128
-.loc ../contracts/Staking.tsol, 126
+.loc ../contracts/Staking.tsol, 128
 ROT
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -745,7 +748,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 130
+.loc ../contracts/Staking.tsol, 132
 ENDS
 .loc ../contracts/Staking.tsol, 0
 CALLREF {
@@ -758,9 +761,9 @@ CALLREF {
 THROW 0
 
 .macro claim_internal_macro
-.loc ../contracts/Staking.tsol, 131
+.loc ../contracts/Staking.tsol, 133
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -789,14 +792,14 @@ IFREFELSEREF
 FIRST
 GTINT 0
 THROWIFNOT 102
-.loc ../contracts/Staking.tsol, 132
+.loc ../contracts/Staking.tsol, 134
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 134
+.loc ../contracts/Staking.tsol, 136
 NOW
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -825,11 +828,11 @@ IFREFELSEREF
 SECOND
 SUB
 UFITS 128
-.loc ../contracts/Staking.tsol, 135
+.loc ../contracts/Staking.tsol, 137
 PUSHINT 50
 DUP
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -859,9 +862,9 @@ INDEX2 2, 0
 MUL
 ADD
 UFITS 128
-.loc ../contracts/Staking.tsol, 136
+.loc ../contracts/Staking.tsol, 138
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -896,7 +899,7 @@ PUSHINT 100
 DIV
 PUSHINT 31536000
 DIV
-.loc ../contracts/Staking.tsol, 138
+.loc ../contracts/Staking.tsol, 140
 PUSHREF {
 }
 FALSE
@@ -904,7 +907,7 @@ GETGLOB 9
 PUSHINT 100000000
 GETGLOB 9
 PUSH S5
-GETGLOB 13
+GETGLOB 14
 NEWC
 STSLICECONST x62_
 STSLICE
@@ -926,10 +929,10 @@ STBREFR
 ENDC
 PUSHPOW2 7
 SENDRAWMSG
-.loc ../contracts/Staking.tsol, 139
+.loc ../contracts/Staking.tsol, 141
 DUP
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 DUP2
 PUSHINT 267
 DICTGET
@@ -980,8 +983,8 @@ ROTREV
 PUSHINT 267
 DICTSETB
 DUP
-SETGLOB 16
-.loc ../contracts/Staking.tsol, 140
+SETGLOB 17
+.loc ../contracts/Staking.tsol, 142
 GETGLOB 9
 TUCK
 OVER
@@ -1029,10 +1032,10 @@ CALLREF {
 ROTREV
 PUSHINT 267
 DICTSETB
-SETGLOB 16
-.loc ../contracts/Staking.tsol, 141
+SETGLOB 17
+.loc ../contracts/Staking.tsol, 143
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -1081,7 +1084,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 144
+.loc ../contracts/Staking.tsol, 146
 OVER
 PUSHCONT {
 	LDREF
@@ -1124,10 +1127,10 @@ CALLREF {
 THROW 0
 
 .macro unstakable_internal_macro
-.loc ../contracts/Staking.tsol, 145
+.loc ../contracts/Staking.tsol, 147
 NOW
 OVER
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -1162,7 +1165,7 @@ DUP
 PUSHCONT {
 	DROP
 	DUP
-	GETGLOB 16
+	GETGLOB 17
 	PUSHINT 267
 	DICTGET
 IFREFELSEREF
@@ -1204,7 +1207,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 148
+.loc ../contracts/Staking.tsol, 150
 OVER
 PUSHCONT {
 	LDREF
@@ -1225,9 +1228,9 @@ CALLREF {
 THROW 0
 
 .macro unstake_internal_macro
-.loc ../contracts/Staking.tsol, 149
+.loc ../contracts/Staking.tsol, 151
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -1257,9 +1260,9 @@ FIRST
 OVER
 GEQ
 THROWIFNOT 105
-.loc ../contracts/Staking.tsol, 150
+.loc ../contracts/Staking.tsol, 152
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -1292,20 +1295,20 @@ UFITS 128
 NOW
 LEQ
 THROWIFNOT 103
-.loc ../contracts/Staking.tsol, 151
+.loc ../contracts/Staking.tsol, 153
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 152
+.loc ../contracts/Staking.tsol, 154
 PUSHREF {
 }
-.loc ../contracts/Staking.tsol, 153
+.loc ../contracts/Staking.tsol, 155
 FALSE
 GETGLOB 9
 PUSHINT 100000000
 GETGLOB 9
 PUSH S5
-GETGLOB 13
+GETGLOB 14
 NEWC
 STSLICECONST x62_
 STSLICE
@@ -1327,10 +1330,10 @@ STBREFR
 ENDC
 PUSHPOW2 7
 SENDRAWMSG
-.loc ../contracts/Staking.tsol, 154
+.loc ../contracts/Staking.tsol, 156
 DUP
 GETGLOB 9
-GETGLOB 16
+GETGLOB 17
 DUP2
 PUSHINT 267
 DICTGET
@@ -1380,18 +1383,99 @@ CALLREF {
 ROTREV
 PUSHINT 267
 DICTSETB
-SETGLOB 16
-.loc ../contracts/Staking.tsol, 155
-GETGLOB 17
+SETGLOB 17
+.loc ../contracts/Staking.tsol, 157
+GETGLOB 18
 OVER
 SUB
 UFITS 128
-SETGLOB 17
-.loc ../contracts/Staking.tsol, 156
+SETGLOB 18
+.loc ../contracts/Staking.tsol, 158
 NOW
 SWAP
 GETGLOB 9
 PUSHSLICE xc00000000000000000000000003a4cae0d
+NEWC
+STSLICE
+STSLICE
+STU 128
+STU 128
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/Staking.tsol, 0
+
+.macro withdraw
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/Staking.tsol, 161
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDU 128
+ENDS
+.loc ../contracts/Staking.tsol, 0
+CALLREF {
+	CALL $withdraw_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro withdraw_internal_macro
+.loc ../contracts/Staking.tsol, 162
+GETGLOB 9
+GETGLOB 12
+SDEQ
+THROWIFNOT 110
+.loc ../contracts/Staking.tsol, 163
+PUSHREF {
+}
+.loc ../contracts/Staking.tsol, 164
+FALSE
+GETGLOB 9
+PUSHINT 100000000
+GETGLOB 9
+PUSH S5
+GETGLOB 14
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHINT 1
+STUR 111
+ROLLREV 6
+NEWC
+STSLICECONST x73e22143
+STU 128
+STSLICE
+STU 128
+ROLLREV 3
+NEWC
+STSLICE
+STI 1
+STREF
+STBREFR
+STBREFR
+ENDC
+PUSHPOW2 7
+SENDRAWMSG
+.loc ../contracts/Staking.tsol, 165
+NOW
+SWAP
+GETGLOB 9
+PUSHSLICE xc00000000000000000000000006e8d6d34
 NEWC
 STSLICE
 STSLICE
@@ -1411,7 +1495,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 159
+.loc ../contracts/Staking.tsol, 168
 OVER
 PUSHCONT {
 	LDREF
@@ -1432,9 +1516,9 @@ CALLREF {
 THROW 0
 
 .macro unstakeNFT_internal_macro
-.loc ../contracts/Staking.tsol, 160
+.loc ../contracts/Staking.tsol, 169
 DUP
-GETGLOB 19
+GETGLOB 20
 PUSHINT 267
 DICTGET
 PUSHCONT {
@@ -1446,16 +1530,16 @@ IFNOT
 GETGLOB 9
 SDEQ
 THROWIFNOT 106
-.loc ../contracts/Staking.tsol, 161
+.loc ../contracts/Staking.tsol, 170
 PUSHINT 200000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Staking.tsol, 163
+.loc ../contracts/Staking.tsol, 172
 PUSHINT 0
 PUSHCONT {
 	DUP
 	GETGLOB 9
-	GETGLOB 16
+	GETGLOB 17
 	PUSHINT 267
 	DICTGET
 IFREFELSEREF
@@ -1485,10 +1569,10 @@ IFREFELSEREF
 	LESS
 }
 PUSHCONT {
-	.loc ../contracts/Staking.tsol, 164
+	.loc ../contracts/Staking.tsol, 173
 	DUP
 	GETGLOB 9
-	GETGLOB 16
+	GETGLOB 17
 	PUSHINT 267
 	DICTGET
 IFREFELSEREF
@@ -1521,9 +1605,9 @@ IFREFELSEREF
 	PUSH S2
 	SDEQ
 	PUSHCONT {
-		.loc ../contracts/Staking.tsol, 165
+		.loc ../contracts/Staking.tsol, 174
 		GETGLOB 9
-		GETGLOB 16
+		GETGLOB 17
 		PUSHINT 267
 		DICTGET
 IFREFELSEREF
@@ -1553,7 +1637,7 @@ IFREFELSEREF
 		DEC
 		UFITS 256
 		GETGLOB 9
-		GETGLOB 16
+		GETGLOB 17
 		PUSHINT 267
 		DICTGET
 IFREFELSEREF
@@ -1584,7 +1668,7 @@ IFREFELSEREF
 		DICTUGET
 		THROWIFNOT 50
 		GETGLOB 9
-		GETGLOB 16
+		GETGLOB 17
 		DUP2
 		PUSHINT 267
 		DICTGET
@@ -1642,8 +1726,8 @@ IFREFELSEREF
 		PUSHINT 267
 		DICTSETB
 		DUP
-		SETGLOB 16
-		.loc ../contracts/Staking.tsol, 166
+		SETGLOB 17
+		.loc ../contracts/Staking.tsol, 175
 		GETGLOB 9
 		TUCK
 		OVER
@@ -1703,22 +1787,22 @@ IFREFELSEREF
 		ROTREV
 		PUSHINT 267
 		DICTSETB
-		SETGLOB 16
+		SETGLOB 17
 		.loc ../contracts/Staking.tsol, 0
 	}
 	IF
-	.loc ../contracts/Staking.tsol, 163
+	.loc ../contracts/Staking.tsol, 172
 	INC
 	.loc ../contracts/Staking.tsol, 0
 }
 WHILE
 DROP
-.loc ../contracts/Staking.tsol, 170
+.loc ../contracts/Staking.tsol, 179
 NEWDICT
-.loc ../contracts/Staking.tsol, 172
+.loc ../contracts/Staking.tsol, 181
 GETGLOB 9
 PUSH S2
-GETGLOB 19
+GETGLOB 20
 PUSHINT 267
 DICTGET
 PUSHCONT {
@@ -1749,16 +1833,16 @@ STBREFR
 ENDC
 PUSHPOW2 7
 SENDRAWMSG
-.loc ../contracts/Staking.tsol, 182
+.loc ../contracts/Staking.tsol, 191
 PUSHREFSLICE {
 	.blob x8000000000000000000000000000000000000000000000000000000000000000001_
 }
 OVER
-GETGLOB 19
+GETGLOB 20
 PUSHINT 267
 DICTSET
-SETGLOB 19
-.loc ../contracts/Staking.tsol, 183
+SETGLOB 20
+.loc ../contracts/Staking.tsol, 192
 NOW
 SWAP
 GETGLOB 9
@@ -1789,7 +1873,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 186
+.loc ../contracts/Staking.tsol, 195
 OVER
 PUSHCONT {
 	LDREF
@@ -1832,11 +1916,11 @@ CALLREF {
 THROW 0
 
 .macro getAPY_internal_macro
-.loc ../contracts/Staking.tsol, 187
+.loc ../contracts/Staking.tsol, 196
 PUSHINT 50
 DUP
 ROT
-GETGLOB 16
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -1877,7 +1961,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Staking.tsol, 190
+.loc ../contracts/Staking.tsol, 199
 OVER
 PUSHCONT {
 	LDREF
@@ -1935,8 +2019,8 @@ CALLREF {
 THROW 0
 
 .macro getStakedInfo_internal_macro
-.loc ../contracts/Staking.tsol, 191
-GETGLOB 16
+.loc ../contracts/Staking.tsol, 200
+GETGLOB 17
 PUSHINT 267
 DICTGET
 IFREFELSEREF
@@ -1989,6 +2073,10 @@ LDREF
 ENDS
 CTOS
 LDMSGADDR
+LDREF
+ENDS
+CTOS
+LDMSGADDR
 LDDICT
 LDU 128
 LDU 128
@@ -1998,6 +2086,7 @@ ENDS
 CTOS
 LDMSGADDR
 ENDS
+SETGLOB 21
 SETGLOB 20
 SETGLOB 19
 SETGLOB 18
@@ -2044,7 +2133,7 @@ PUSHCONT {
 	PUSHREFSLICE {
 		.blob x8000000000000000000000000000000000000000000000000000000000000000001_
 	}
-	BLKPUSH 3, 0
+	BLKPUSH 4, 0
 	NEWDICT
 	PUSHINT 0
 	DUP
@@ -2052,6 +2141,7 @@ PUSHCONT {
 	PUSHREFSLICE {
 		.blob x8000000000000000000000000000000000000000000000000000000000000000001_
 	}
+	SETGLOB 21
 	SETGLOB 20
 	SETGLOB 19
 	SETGLOB 18
@@ -2076,6 +2166,7 @@ IFREFELSE {
 }
 
 .macro c7_to_c4
+GETGLOB 21
 GETGLOB 20
 GETGLOB 19
 GETGLOB 18
@@ -2094,6 +2185,9 @@ STU 256
 STU 64
 STONE
 STU 16
+STSLICE
+ROLLREV 10
+NEWC
 STSLICE
 ROLLREV 9
 NEWC
@@ -2114,6 +2208,7 @@ STDICT
 SWAP
 NEWC
 STSLICE
+STBREFR
 STBREFR
 STBREFR
 STBREFR
@@ -2231,13 +2326,33 @@ CALLREF {
 }
 THROW 60
 
-.macro _stakingTokenRoot
+.macro adminWallet
 DROP
 ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 12
+OVER
+PUSHCONT {
+	PUSHSLICE xc0000000000000000000000000f83eef5d
+	NEWC
+	STSLICE
+	STSLICE
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro _stakingTokenRoot
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 13
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000cd7e71c3
@@ -2257,7 +2372,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 13
+GETGLOB 14
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000b6d447f0
@@ -2277,7 +2392,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 14
+GETGLOB 15
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000e54afb82
@@ -2297,7 +2412,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 15
+GETGLOB 16
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000b7d04b3d
@@ -2317,7 +2432,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 16
+GETGLOB 17
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000d808e7d8
@@ -2337,7 +2452,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 17
+GETGLOB 18
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000988c6885
@@ -2357,7 +2472,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 18
+GETGLOB 19
 OVER
 PUSHCONT {
 	PUSHSLICE xc0000000000000000000000000d2145625
@@ -2377,7 +2492,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 19
+GETGLOB 20
 OVER
 PUSHCONT {
 	PUSHSLICE xc000000000000000000000000086a33b2d
@@ -2397,7 +2512,7 @@ ENDS
 CALLREF {
 	CALL $c4_to_c7$
 }
-GETGLOB 20
+GETGLOB 21
 OVER
 PUSHCONT {
 	PUSHSLICE xc000000000000000000000000094441b7d
@@ -2413,11 +2528,11 @@ THROW 0
 
 .macro public_function_selector
 DUP
-PUSHINT 1476978648
+PUSHINT 1377064485
 LEQ
 IFJMPREF {
 	DUP
-	PUSHINT 527729495
+	PUSHINT 411854981
 	LEQ
 	IFJMPREF {
 		DUP
@@ -2425,6 +2540,12 @@ IFJMPREF {
 		EQUAL
 		IFJMPREF {
 			CALL $NftToStaker$
+		}
+		DUP
+		PUSHINT 313391878
+		EQUAL
+		IFJMPREF {
+			CALL $withdraw$
 		}
 		DUP
 		PUSHINT 340007805
@@ -2438,17 +2559,17 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $totalStakedAmount$
 		}
+	}
+	DUP
+	PUSHINT 936397629
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 527729495
 		EQUAL
 		IFJMPREF {
 			CALL $unstakable$
 		}
-	}
-	DUP
-	PUSHINT 1052344328
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 760070773
 		EQUAL
@@ -2467,17 +2588,17 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $forTest$
 		}
+	}
+	DUP
+	PUSHINT 1120219248
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 1052344328
 		EQUAL
 		IFJMPREF {
 			CALL $getStakedInfo$
 		}
-	}
-	DUP
-	PUSHINT 1236465367
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 1084603077
 		EQUAL
@@ -2496,17 +2617,17 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $claim$
 		}
+	}
+	DUP
+	PUSHINT 1377064485
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 1236465367
 		EQUAL
 		IFJMPREF {
 			CALL $onTokenWallet$
 		}
-	}
-	DUP
-	PUSHINT 1476978648
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 1300132291
 		EQUAL
@@ -2525,12 +2646,6 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $totalStakedNftCount$
 		}
-		DUP
-		PUSHINT 1476978648
-		EQUAL
-		IFJMPREF {
-			CALL $stakes$
-		}
 	}
 }
 DUP
@@ -2538,28 +2653,50 @@ PUSHINT 2087248313
 LEQ
 IFJMPREF {
 	DUP
-	PUSHINT 1699412866
-	EQUAL
-	IFJMPREF {
-		CALL $_stakingNFTRoot$
-	}
-	DUP
-	PUSHINT 1824563769
-	EQUAL
-	IFJMPREF {
-		CALL $constructor$
-	}
-	DUP
 	PUSHINT 1893244873
-	EQUAL
+	LEQ
 	IFJMPREF {
-		CALL $onAcceptTokensTransfer$
+		DUP
+		PUSHINT 1476978648
+		EQUAL
+		IFJMPREF {
+			CALL $stakes$
+		}
+		DUP
+		PUSHINT 1699412866
+		EQUAL
+		IFJMPREF {
+			CALL $_stakingNFTRoot$
+		}
+		DUP
+		PUSHINT 1824563769
+		EQUAL
+		IFJMPREF {
+			CALL $constructor$
+		}
+		DUP
+		PUSHINT 1893244873
+		EQUAL
+		IFJMPREF {
+			CALL $onAcceptTokensTransfer$
+		}
 	}
 	DUP
 	PUSHINT 2087248313
-	EQUAL
+	LEQ
 	IFJMPREF {
-		CALL $onNftTransfer$
+		DUP
+		PUSHINT 2017390429
+		EQUAL
+		IFJMPREF {
+			CALL $adminWallet$
+		}
+		DUP
+		PUSHINT 2087248313
+		EQUAL
+		IFJMPREF {
+			CALL $onNftTransfer$
+		}
 	}
 }
 

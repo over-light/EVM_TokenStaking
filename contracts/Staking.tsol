@@ -160,6 +160,7 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
 
     function withdraw(uint128 amount) external {
         require(msg.sender==adminWallet, 110);
+        TvmCell payload;
         ITokenWallet(_stakingTokenWallet).transfer{ value: 0, flag: 128 }(amount, msg.sender, 0.1 ever, msg.sender, false, payload);
         emit TokenWithdraw(msg.sender, amount, now);
     }

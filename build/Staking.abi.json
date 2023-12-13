@@ -83,6 +83,14 @@
 			]
 		},
 		{
+			"name": "withdraw",
+			"inputs": [
+				{"name":"amount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "unstakeNFT",
 			"inputs": [
 				{"name":"nftAddr","type":"address"}
@@ -106,6 +114,14 @@
 			],
 			"outputs": [
 				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nfts","type":"address[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "adminWallet",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"adminWallet","type":"address"}
 			]
 		},
 		{
@@ -217,6 +233,16 @@
 			]
 		},
 		{
+			"name": "TokenWithdraw",
+			"inputs": [
+				{"name":"admin","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"time","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "NftStake",
 			"inputs": [
 				{"name":"staker","type":"address"},
@@ -243,6 +269,7 @@
 		{"name":"_constructorFlag","type":"bool"},
 		{"name":"_nonce","type":"uint16"},
 		{"name":"_owner","type":"address"},
+		{"name":"adminWallet","type":"address"},
 		{"name":"_stakingTokenRoot","type":"address"},
 		{"name":"_stakingTokenWallet","type":"address"},
 		{"name":"_stakingNFTRoot","type":"address"},
