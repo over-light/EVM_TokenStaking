@@ -85,7 +85,7 @@
 		{
 			"name": "unstakeNFT",
 			"inputs": [
-				{"name":"nftID","type":"uint256"}
+				{"name":"nftAddr","type":"address"}
 			],
 			"outputs": [
 			]
@@ -105,7 +105,7 @@
 				{"name":"staker","type":"address"}
 			],
 			"outputs": [
-				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nftIds","type":"uint256[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"value0","type":"tuple"}
+				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nfts","type":"address[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{
@@ -145,7 +145,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nftIds","type":"uint256[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"stakes","type":"map(address,tuple)"}
+				{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nfts","type":"address[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"stakes","type":"map(address,tuple)"}
 			]
 		},
 		{
@@ -165,11 +165,11 @@
 			]
 		},
 		{
-			"name": "NftIDToStaker",
+			"name": "NftToStaker",
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"NftIDToStaker","type":"map(uint256,address)"}
+				{"name":"NftToStaker","type":"map(address,address)"}
 			]
 		},
 		{
@@ -220,7 +220,7 @@
 			"name": "NftStake",
 			"inputs": [
 				{"name":"staker","type":"address"},
-				{"name":"nftID","type":"uint256"},
+				{"name":"nft","type":"address"},
 				{"name":"time","type":"uint128"}
 			],
 			"outputs": [
@@ -230,7 +230,7 @@
 			"name": "NftUnstake",
 			"inputs": [
 				{"name":"unstaker","type":"address"},
-				{"name":"nftID","type":"uint256"},
+				{"name":"nft","type":"address"},
 				{"name":"time","type":"uint128"}
 			],
 			"outputs": [
@@ -247,10 +247,10 @@
 		{"name":"_stakingTokenWallet","type":"address"},
 		{"name":"_stakingNFTRoot","type":"address"},
 		{"name":"forTest","type":"address"},
-		{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nftIds","type":"uint256[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"stakes","type":"map(address,tuple)"},
+		{"components":[{"name":"amount","type":"uint128"},{"name":"timestamp","type":"uint128"},{"name":"nfts","type":"address[]"},{"name":"claimedAmount","type":"uint128"},{"name":"firstStakedTime","type":"uint128"}],"name":"stakes","type":"map(address,tuple)"},
 		{"name":"totalStakedAmount","type":"uint128"},
 		{"name":"totalStakedNftCount","type":"uint128"},
-		{"name":"NftIDToStaker","type":"map(uint256,address)"},
+		{"name":"NftToStaker","type":"map(address,address)"},
 		{"name":"nftSender","type":"address"}
 	]
 }

@@ -1,6 +1,6 @@
 {
     "contracts/Staking.tsol": {
-        "modificationTime": 1701886143450
+        "modificationTime": 1702057686280
     },
     "/home/ubuntu/super1114/venom-token-staking/node_modules/@broxus/tip3/contracts/interfaces/IAcceptTokensTransferCallback.tsol": {
         "modificationTime": 1701174734310
@@ -12,6 +12,9 @@
         "modificationTime": 1701174734310
     },
     "/home/ubuntu/super1114/venom-token-staking/node_modules/@broxus/tip4/contracts/TIP4_1/interfaces/INftTransfer.tsol": {
+        "modificationTime": 1701174740841
+    },
+    "/home/ubuntu/super1114/venom-token-staking/node_modules/@broxus/tip4/contracts/TIP4_1/interfaces/ITIP4_1NFT.tsol": {
         "modificationTime": 1701174740841
     }
 }

@@ -7,6 +7,7 @@ import "@broxus/tip3/contracts/interfaces/IAcceptTokensTransferCallback.tsol";
 import "@broxus/tip3/contracts/interfaces/ITokenRoot.tsol";
 import "@broxus/tip3/contracts/interfaces/ITokenWallet.tsol";
 import "@broxus/tip4/contracts/TIP4_1/interfaces/INftTransfer.tsol";
+import "@broxus/tip4/contracts/TIP4_1/interfaces/ITIP4_1NFT.tsol";
 
 
 // // This interface for transferring NFT to winner
@@ -17,7 +18,7 @@ import "@broxus/tip4/contracts/TIP4_1/interfaces/INftTransfer.tsol";
 contract Staking is IAcceptTokensTransferCallback, INftTransfer {
     uint16  static _nonce; // some random value to affect on contract address
     address static _owner; // tokensale owner. will receive all transfers
-
+    address public adminWallet;
     uint128 public constant BASE_APY = 50;
     uint128 public constant SECONDS_IN_YEAR = 31536000;
 
@@ -29,7 +30,7 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
     struct Stake {
         uint128 amount;
         uint128 timestamp;
-        uint256[] nftIds;
+        address[] nfts;
         uint128 claimedAmount;
         uint128 firstStakedTime;
     }
@@ -37,13 +38,14 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
     uint128 public totalStakedAmount;
     uint128 public totalStakedNftCount;
 
-    mapping(uint256 => address) public NftIDToStaker;
+    mapping(address => address) public NftToStaker;
     event TokenStake(address indexed staker, uint128 amount, uint128 time);
     event TokenClaim(address indexed staker, uint128 amount, uint128 time);
     event TokenUnstake(address indexed unstaker, uint128 amount, uint128 time);
+    event TokenWithdraw(address indexed admin, uint128 amount, uint128 time);
 
-    event NftStake(address indexed staker, uint256 nftID, uint128 time);
-    event NftUnstake(address indexed unstaker, uint256 nftID, uint128 time);
+    event NftStake(address indexed staker, address nft, uint128 time);
+    event NftUnstake(address indexed unstaker, address nft, uint128 time);
 
 
     address public nftSender;
@@ -58,6 +60,7 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
         _stakingNFTRoot = stakingNFTRoot;
         totalStakedAmount = 0;
         totalStakedNftCount = 0;
+        adminWallet = msg.sender;
         ITokenRoot(stakingTokenRoot).deployWallet {
             value: 0.2 ever,
             flag: 1,
@@ -109,20 +112,19 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
         address gasReceiver,
         TvmCell // payload
     ) override external {
-        // require(msg.sender==_stakingNFTRoot, 108);
-        if(collectionAddress == _stakingNFTRoot) {
-            tvm.rawReserve(0.2 ever, 0);
-            stakes[oldOwner].nftIds.push(nftID);
-            nftSender = oldOwner;
-            totalStakedNftCount++;
-            NftIDToStaker[nftID] = oldOwner;
-            emit NftStake(oldOwner, nftID, now);
-        }
+        // require(msg.sender==_stakingTokenWallet, 108);
+        // require(collectionAddress==_stakingNFTRoot, 109)
+        tvm.rawReserve(0.2 ever, 0);
+        stakes[oldOwner].nfts.push(msg.sender);
+        nftSender = oldOwner;
+        totalStakedNftCount++;
+        NftToStaker[msg.sender] = oldOwner;
+        emit NftStake(oldOwner, msg.sender, now);
     }
     
     function getRewardAmount(address staker) external returns(uint128) {
         uint128 duration = now - stakes[staker].timestamp;
-        uint128 apy = (uint128) (BASE_APY + 50 * stakes[staker].nftIds.length);
+        uint128 apy = (uint128) (BASE_APY + 50 * stakes[staker].nfts.length);
         uint128 reward = (stakes[staker].amount * apy) * duration / 100 / SECONDS_IN_YEAR;
         return reward;
     }
@@ -132,7 +134,7 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
         tvm.rawReserve(1 ever, 0);
         TvmCell payload;
         uint128 duration = now - stakes[msg.sender].timestamp;
-        uint128 apy = (uint128) (BASE_APY + 50 * stakes[msg.sender].nftIds.length);
+        uint128 apy = (uint128) (BASE_APY + 50 * stakes[msg.sender].nfts.length);
         uint128 reward = (stakes[msg.sender].amount * apy) * duration / 100 / SECONDS_IN_YEAR;
 
         ITokenWallet(_stakingTokenWallet).transfer{ value: 0, flag: 128 }(reward, msg.sender, 0.1 ever, msg.sender, false, payload);
@@ -156,22 +158,41 @@ contract Staking is IAcceptTokensTransferCallback, INftTransfer {
         emit TokenUnstake(msg.sender, amount, now);
     }
 
-    function unstakeNFT(uint256 nftID) external {
-        require(NftIDToStaker[nftID] == msg.sender, 106);
+    function withdraw(uint128 amount) external {
+        require(msg.sender==adminWallet, 110);
+        ITokenWallet(_stakingTokenWallet).transfer{ value: 0, flag: 128 }(amount, msg.sender, 0.1 ever, msg.sender, false, payload);
+        emit TokenWithdraw(msg.sender, amount, now);
+    }
+
+    function unstakeNFT(address nftAddr) external {
+        require(NftToStaker[nftAddr] == msg.sender, 106);
         tvm.rawReserve(0.2 ever, 0);
         // stakes[msg.sender].nftIds
-        for(uint i=0; i<stakes[msg.sender].nftIds.length;i++) {
-            if(stakes[msg.sender].nftIds[i]==nftID) {
-                stakes[msg.sender].nftIds[i] = stakes[msg.sender].nftIds[stakes[msg.sender].nftIds.length-1];
-                stakes[msg.sender].nftIds.pop();
+        for(uint i=0; i<stakes[msg.sender].nfts.length;i++) {
+            if(stakes[msg.sender].nfts[i]==nftAddr) {
+                stakes[msg.sender].nfts[i] = stakes[msg.sender].nfts[stakes[msg.sender].nfts.length-1];
+                stakes[msg.sender].nfts.pop();
             }
         }
-        NftIDToStaker[nftID] = address(0);
-        emit NftUnstake(msg.sender, nftID, now);
+
+        mapping(address => ITIP4_1NFT.CallbackParams) empty;
+        // just operating with interface
+        ITIP4_1NFT(nftAddr).transfer{
+            value: 0,
+            flag: 128,
+            bounce: false
+        }(
+            NftToStaker[nftAddr],
+            msg.sender,
+            empty
+        );
+
+        NftToStaker[nftAddr] = address(0);
+        emit NftUnstake(msg.sender, nftAddr, now);
     }
 
     function getAPY(address staker) external returns(uint128) {
-        return (uint128) (BASE_APY + 50 * stakes[staker].nftIds.length);
+        return (uint128) (BASE_APY + 50 * stakes[staker].nfts.length);
     }
     
     function getStakedInfo(address staker) external returns(Stake) {
